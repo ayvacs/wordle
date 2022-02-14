@@ -102,12 +102,12 @@ for round in range(6):
 			chosen_word = w1
 			srmat = rmat
 		
-	print(chosen_word)
+	print(bcolors.BOLD + "\nNEW WORD:\n" + bcolors.ENDC + " >> " + chosen_word)
 	inp = input()
 	feedback = tuple([int(el) for el in inp.split(",")])
 	lines = srmat[feedback]
 	if len(lines) == 1:
-		print("Done. Final word is {}".format(lines[0]))
+		print(bcolors.BOLD + "\nSUCCESS: " + bcolors.ENDC + "{}".format(lines[0]))
 		exit(0)
 
 print("Failed. Did not find word after 6 attempts")
