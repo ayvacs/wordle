@@ -38,10 +38,12 @@ print(bcolors.FAIL + """
       it into Wordle.
     - After that, type in your result, replacing
       green with `2`, yellow with `1`, and gray
-      with `0`, and separating digits with a comma.
-    - For example, if you got this result:
+      with `0`.
+    - For example, if you got these squares:
         🟩🟨⬛️⬛️🟨
-      You would type `2,1,0,0,1`.
+      You would type `21001`.
+    - It can take a while to process the initial
+      guess! Don't give up on me :P
   """ + bcolors.ENDC)
 
 
@@ -80,8 +82,10 @@ for round in range(6):
 	srmat = {}
 	if round != 0:
 		all_it = all_lines
+		nw = "NEW WORD"
 	else:
 		all_it = ["aesir"]
+		nw = "STARTING WORD"
 
 	for w1 in all_it:
 		w1 = w1.strip()
@@ -102,12 +106,13 @@ for round in range(6):
 			chosen_word = w1
 			srmat = rmat
 		
-	print(bcolors.BOLD + "\nNEW WORD:\n" + bcolors.ENDC + " >> " + chosen_word)
+	print(bcolors.BOLD + "\n" + nw + ":\n" + bcolors.ENDC + " >> " + chosen_word)
 	inp = input(bcolors.ENDC + " >> ")
-	feedback = tuple([int(el) for el in inp.split(",")])
+	feedback = tuple([int(el) for el in list(inp)])
 	lines = srmat[feedback]
 	if len(lines) == 1:
 		print(bcolors.BOLD + "\nSUCCESS: " + bcolors.ENDC + "{}".format(lines[0]))
+		print(" ")
 		exit(0)
 
 print(bcolors.BOLD + "\nFAIL: " + bcolors.ENDC + "I couldn't find the word after 6 attempts.")
