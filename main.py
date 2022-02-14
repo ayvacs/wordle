@@ -31,11 +31,11 @@ print(bcolors.FAIL + """
       ░      ░ ░      ░  ░   ░     ░  ░   ░       
                             ░                     
 
-  Made by @ayvacs on GitHub
+  Made by """ + bcolors.BOLD + """@ayvacs on GitHub
 
-  """ + bcolors.BOLD + """Here's how to use the program:""" + bcolors.ENDC + bcolors.FAIL + """
+  Here's how to use the program:""" + bcolors.ENDC + bcolors.FAIL + """
     - Every time it gives you a new word, type
-      it into Wordle.g
+      it into Wordle.
     - After that, type in your result, replacing
       green with `2`, yellow with `1`, and gray
       with `0`, and separating digits with a comma.
@@ -103,11 +103,11 @@ for round in range(6):
 			srmat = rmat
 		
 	print(bcolors.BOLD + "\nNEW WORD:\n" + bcolors.ENDC + " >> " + chosen_word)
-	inp = input()
+	inp = input(bcolors.ENDC + " >> ")
 	feedback = tuple([int(el) for el in inp.split(",")])
 	lines = srmat[feedback]
 	if len(lines) == 1:
 		print(bcolors.BOLD + "\nSUCCESS: " + bcolors.ENDC + "{}".format(lines[0]))
 		exit(0)
 
-print("Failed. Did not find word after 6 attempts")
+print(bcolors.BOLD + "\nFAIL: " + bcolors.ENDC + "I couldn't find the word after 6 attempts.")
