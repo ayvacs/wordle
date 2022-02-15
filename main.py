@@ -51,15 +51,15 @@ print(bcolors.FAIL + """
   """ + bcolors.ENDC)
 
 
-f = open("words.txt", "r")
-all_w = open("words.txt", "r")
 
-lines = f.readlines()
+
+file = open("words.txt", "r")
+lines = file.readlines()
+
+all_w = open("words.txt", "r")
 all_lines = all_w.readlines()
 
-
 count = 0
-
 
 @lru_cache(maxsize=None)
 def calc_response_vector(w1, w2):
