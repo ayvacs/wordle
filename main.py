@@ -48,7 +48,7 @@ print(bcolors.FAIL + """
       You would type `21001`.
     - It can take a while to process the initial
       guess! Don't give up on me :P
-  """ + bcolors.ENDC)
+""" + bcolors.ENDC)
 
 
 
